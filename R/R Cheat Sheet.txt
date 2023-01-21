@@ -1,0 +1,293 @@
+
+* Install r and studio
+
+* R studio have 3 pallet window --> console window , environtment window and package window.
+
+* Dynamically Typed as Python
+
+* Case Sensitive
+
+* Comment --> #
+
+1) Variable assigning ==>
+
+  x <- 5 ==> assigning 5 to x.
+ 
+  y <- 1:10 ==> y as an array from 1 to 10
+
+  
+2) printing text ==> print("hello world")
+
+3) arithmatic ==> y*y ==> gives squared y array.
+
+4) Clearing console ==> ctrl + L
+
+5) deleting variable ==>  rm(var) or remove(var)
+
+6) to see all variable use ls()
+
+7) deleting all variable --> remove(list=ls())
+
+8) Installing packages ==>
+
+      browse.url("url_link_from_where_package_should_be_installed")
+      install.packages("package_name")
+
+9) Using package ==> require("package_name")
+
+10) Listing all packages --> library()
+
+11) Listing all imported packages in code ==> search()
+
+12) to un-import package -> detach("package:package_name",unload=TRUE)
+
+13) to remove package --> remove.packages("package_name)
+
+14) Getting abstract data knowledge for package ==>   ? package_name
+
+15) To see list of Built in datasets ==> data()  or library(help="datasets")
+
+16) Getting help about dataset ==> ? dataset_name
+
+17) Checking strucuture of dataset ==> str(dataset_name) //without ""
+
+18) loading dataset into workspace --> data("dataset_name")
+
+19) Variable intialization 
+
+       * x <- 1:50 --> list of 1 to 50 numbers type of num.
+
+       * x <- c(1,2,3,4,5)  --> list concatenation from 1 to 5.
+
+       * x <- seq(5,50,by=5) ---> gives list of sequence of multiple of 5 from 5 to 50.
+
+20) Getting user input in variable -->
+
+                 x <- scan() ==> ask for values one by one in console and press double enter to stop insertions.
+
+21) Reading data from tab separated text file --> (delimiter is tab)
+            
+               var1 <- read.table("path\filename.txt",header=TRUE,sep="\t")
+
+22) Reading data from csv file -->
+              
+               var2 <- read.csv("path\filename.csv",header=TRUE,sep=",")
+
+23) checking imported file data -->
+
+              view(var1)
+
+24) Checking frequency distribution for a perticular attribute atr.
+  
+           y <- table(var1$atr) --> gives counting of occurence of distinct values in atr. 
+
+25) Creating a barplot on fd -->
+
+           barplot(y)
+
+26) Printing barplot in ascending order ==>  barplot(y[order(y)])       
+  
+27) Printing barplot in descending order ==>  barplot(y[order(-y)]) 
+
+28) changing barplot orientation ==>  barplot(y,horiz=TRUE)
+
+26) changing barplot colors=>  barplot(y,col="red")   // all bars in red
+
+27) changing color of each bar ==> 
+
+            barplot(y,col=c("red","blue","green","orange")) 
+  
+            barplot(y[order(-y)],horiz=TRUE,col=c("red","green"))   // can use color number
+
+28) Getting all colors list ==> 
+  
+                       colors()
+
+29) Removing bar border ==> 
+  
+            barplot(y,border=NA)
+
+30) Giving title to barplot ==>
+
+            barplot(y,main="ur title"  or "ur \n title")
+
+31) labeling x-axis  ==>
+
+            barplot(y,xlab=" x label")
+
+
+32) Exporting barplot ==>
+
+       * png(filename="path/filename.png",width=700,height=700)  -->device initialization
+
+         barplot(y)  --> assigning plotting in format
+
+         dev.off()   --> closing device.
+
+33) Creating histogram in R ==>   creating bar in range of perticular attribute atr and these range is called as buckets.
+
+                                  hist(var1$atr) --> with default buckets.
+
+                                  hist(var1$atr,breaks=5) --> create plot with 5 or 6 bars.
+
+                                  hist(var1$atr,breaks=c(0,40,60,100)) --> create plot 3 range bars with frequency density on y axis. so area will give fd.
+
+                                  hist(var1$atr,breaks=c(0,40,60,100),freq=TRUE) --> gives 3 range bar with frequency distribution.
+
+
+* title ,label and color are used as barplot.
+
+
+
+
+34) Perceptron ==> First artificial neuron in 1980.
+
+                   Properties of Perceptron ==> Takes many binary inputs and each input is binary (0 and 1) x1,x2,x3....and so on.
+                                              
+                                                Produces output binary y.
+
+                                                Getting output -->  
+                                                                    1) 0  if sum_of_all(input*weights) < threshold
+                
+                                                                    2) 1  if sum_of_all(input*weights) > threshold
+
+
+                                                Values can be inserted using programming or by learning.
+
+
+35) Biasing perceptron (General Perceptron) to take input in any range not only binary .
+
+                                              output ==> 1) 0  if sum_of_all(input*weight + bias) < 0
+                                                         
+                                                         2) 1  if sum_of_all(input*weight + bias) >= 0
+
+36) Activation functions ==>
+
+                             function suddenly provides a step after a perticular threshold value.
+                             In above example threshold value is 0 and activation function is step.  ( till less than 0 is 0 else 1)
+
+
+37) Sigmoid activation function  and Sigmoid /Logistic Neuron--> 
+                   
+                             f(x) = 1/1-e^-x
+
+                             output ==> 1/1 - e^( -sum_of_all(input*weigth) - bias)
+
+                             Changes are gradual so step changes are negligible in sigmoid output.
+
+
+38) Neural Networks ==> stacking neurons to make a neural network.
+
+
+39) Types of neurons stacking --> 1) Parallel
+                                  2) Sequential 
+
+    1) Parallel network ==> 
+                         Having same inputs for all neurons and getting different outputs as y1,y2 etc.
+
+
+    2) Sequential Network ==> Output of parallel neurons fed into another stage neurons.
+
+ 
+                             
+40) Single perceptron works better for binary classification but network can handle much more classifications.
+
+41) Each  set of parallel perceptron is known as layer.
+
+42) All layers between input and output layers as known as Hidden layers.
+
+43) 5-3-4-1 Network ==> 5 input in first layer then 3 and so on.
+
+44) Cyclic Network ==> if output of perceptron getting as input to same perceptron. eg RNN(Reccurrence) used for NLP 
+
+45) Feed Forward Network ==> Outout processing is always happens in one direction.
+
+46) Fully connected Network ==> All the perceptron receiving all parallel inputs .
+
+47) Partially Connected Network ==> if all the perceptrons not receiving all parallel inputs 
+
+48) Deep learning  ==> Studying the complexity of deep layers in neural nets.
+
+
+49) How Neural Network works and learn ==> Learning means tuning through data to get more accuracy in output by taking best bias and weigths combinations.
+
+50) Gradient Descent  ==> a mathematical approach  to find best optimized value of weights and bias by finding minimum of a function.
+
+51) Gradient Descent Steps ==>
+                              1)  Assign random weigth and bias.  (Initialization)
+
+                              2)  Calculate output using random weigths and bias.  ( Forward propagation)
+
+                              3)  Compare predicted output with original output and get error values using error functions
+
+                              4)  Find best suitable weigths and bias to reduce error .  ( Backward propagation)
+                 
+                                          w = w - alpha*(delta of w) 
+
+                                          b = b - alpha*(delta of b)    where alpha is learning rate and delta is unit step change.
+
+
+                              5)  Update weigths and bias and repeat above steps from 2. ( Implementation of Gradient Decent)
+
+52) Loss function ==> chosen function for minimizing error.
+
+53) Gradient Descent ==> a way to find out minimal optimal factors for choosed function.
+
+54) Squared error loss function work well with regression not with classification so thats why we use Cross Entropy loss function for error finding.
+
+55) Cross entroy loss function ==> finds global minima 
+
+                        y = -yLog(y') -(1-y)Log(1-y')  where y' is predicted output.
+
+                        Error >> -Log(y')   if y = 1 , for minimum error y' should be large.
+                        Error >> -Log(1-y')  if y = 0 , for minimum error y' should be minimum.
+  
+
+
+56) Taking large alpha cause overshoot from minima .
+   
+    Alpha = no of steps taken to find minima.
+
+    delta = calculus unit of change.
+
+
+57)  How to find W and B ==> 
+
+                         1) Do forward propagation with random values.
+                    
+                         2) Caculate error function using back propagation.
+    
+                         3) To find minimum error find partial derivative of error w.r.t activation function , weigths and biases.
+
+                         4) Apply chain rule to calculate values.
+
+                         5) Modify bias and weigths till fine accuracy.
+
+
+58) Why do we use activation function ==>
+                                           1) To put special boundary on output
+
+                                           2) to find non linear and complex relations.
+
+59) Types of activation function ==> sigmoid ,step , tanh and ReLU ( Rectified Linear Unit used in hidden layers).
+
+60) Hidden layes and output layers can have different activation function.
+
+61) For Multiclass classification we use softmax activation function.
+
+62) Epoch is one neural cycle through data.
+
+63) keras work with network model layers  and tensorflow work with backend calculus. 
+
+64) Install keras by ==> install.packages("keras") and initializing by library(keras)
+
+65) Install tensorflow ==> install_keras()
+
+66) downloading fashion MNIST dataset ==> fs <- dataset_fashion_mnist()
+
+67) Fashion mnist have splitted test(60K) and train(10K) data and each object have 2 attribute x and y where x represents image of 28*28 pixel 
+                               (having value from 0 -255) and y is label of perticular image. total 9 different kinds of labels present in this.
+
+
+68) 
+
